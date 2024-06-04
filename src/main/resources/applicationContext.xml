@@ -1,0 +1,40 @@
+<!-- File: applicationContext.xml (XML Configuration) -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Section 12 Inversion of Control -->
+    <bean id="bookRepository12" class="com.coherentsolutions.spring.school.section12spring.repository.BookRepository"/>
+    <bean id="bookService12" class="com.coherentsolutions.spring.school.section12spring.service.BookService">
+        <property name="bookRepository" ref="bookRepository12"/>
+    </bean>
+
+    <!-- Section 22 -->
+    <bean id="repository22" class="com.coherentsolutions.spring.school.section22ApplicationContext.ex01xmlbased.Repository"/>
+
+    <bean id="service22" class="com.coherentsolutions.spring.school.section22ApplicationContext.ex01xmlbased.Service">
+         <property name="repository" ref="repository22"/>
+    </bean>
+
+
+    <!-- Section 23 -->
+    <bean id="myBean" class="com.coherentsolutions.spring.school.section23beanlifecycle.ex01definition.ex01xml.MyClass" />
+
+    <!-- Section31 -->
+    <!-- Define the Repository bean -->
+    <bean id="repository" class="com.coherentsolutions.spring.school.section31xmlbased.Repository" />
+
+    <!-- Define the Service bean with constructor injection -->
+    <bean id="service" class="com.coherentsolutions.spring.school.section31xmlbased.Service">
+        <constructor-arg ref="repository" />
+    </bean>
+
+    <!-- Define the Service bean with setter injection (commented out) -->
+    <!--
+    <bean id="service" class="com.coherentsolutions.spring.school.section31xmlbased.Service">
+        <property name="repository" ref="repository" />
+    </bean>
+    -->
+
+</beans>
